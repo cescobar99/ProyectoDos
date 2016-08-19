@@ -57,7 +57,19 @@ public class principal extends javax.swing.JFrame {
 
         jLabel3.setText("Numero Dos:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 70, 90, 30));
+
+        txtNumeroUno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroUnoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumeroUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 90, 30));
+
+        txtNumeroDos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumeroDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 70, 90, 30));
 
         jLabel4.setText("Resultado:");
@@ -85,7 +97,7 @@ public class principal extends javax.swing.JFrame {
         jLabel5.setText("Operacion");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
-        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suma", "Resta", "Multiplicacion", "Mivision" }));
+        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suma", "Resta", "Multiplicacion", "Division" }));
         jPanel1.add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,6 +131,13 @@ public class principal extends javax.swing.JFrame {
     num2= Double.parseDouble(txtNumeroDos.getText());
     op= cmbOperacion.getSelectedIndex();
     
+    if(op == 3 && num2 == 0){
+    JOptionPane.showMessageDialog(this, "No digite cero en el segundo numero", "Error", JOptionPane.ERROR_MESSAGE);
+    txtNumeroDos.requestFocusInWindow();
+    txtNumeroDos.selectAll();
+    }
+    else {
+    
     switch(op){
     case 0:
     res= num1+num2;
@@ -136,8 +155,7 @@ public class principal extends javax.swing.JFrame {
     resultado=String.valueOf(res);
     txtResultado.setText(resultado);
     
-    
-    
+    }
     }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -150,6 +168,24 @@ public class principal extends javax.swing.JFrame {
     cmbOperacion.setSelectedIndex(0);
     
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtNumeroUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroUnoKeyTyped
+    char c=evt.getKeyChar(); 
+    if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+   } 
+         
+        
+    }//GEN-LAST:event_txtNumeroUnoKeyTyped
+
+    private void txtNumeroDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDosKeyTyped
+    char c=evt.getKeyChar(); 
+    if(!Character.isDigit(c)) { 
+              getToolkit().beep(); 
+              evt.consume();
+   } 
+    }//GEN-LAST:event_txtNumeroDosKeyTyped
 
     /**
      * @param args the command line arguments
