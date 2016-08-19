@@ -6,6 +6,8 @@
 
 package interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author yescobar7
@@ -105,6 +107,14 @@ public class principal extends javax.swing.JFrame {
     double num1, num2, res=0;
     int op;
     
+    if(txtNumeroUno.getText().trim().isEmpty()){
+    JOptionPane.showMessageDialog(this, "Digite el numero uno", "Error", JOptionPane.ERROR_MESSAGE);
+    txtNumeroUno.requestFocusInWindow();
+    }else if(txtNumeroDos.getText().trim().isEmpty()){
+    JOptionPane.showMessageDialog(this, "Digite el numero dos", "Error", JOptionPane.ERROR_MESSAGE);
+    txtNumeroDos.requestFocusInWindow();
+    }
+    else{
     num1= Double.parseDouble(txtNumeroUno.getText());
     num2= Double.parseDouble(txtNumeroDos.getText());
     op= cmbOperacion.getSelectedIndex();
@@ -123,12 +133,12 @@ public class principal extends javax.swing.JFrame {
     res= num1/num2;
     }
     
-    resultado=String.valueOf(res);cle
+    resultado=String.valueOf(res);
     txtResultado.setText(resultado);
     
     
     
-    
+    }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
